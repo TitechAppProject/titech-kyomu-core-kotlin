@@ -22,7 +22,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "app.titech"
             artifactId = "titech-kyomu-core"
-            version = "1.1.0"
+            version = "1.2.0"
 
             from(components["java"])
         }
