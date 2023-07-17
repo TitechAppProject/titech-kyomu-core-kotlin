@@ -13,8 +13,8 @@ class TitechKyomuLoginError : Exception()
 class TitechKyomu(
     val httpClient: HTTPClient = HTTPClientImpl()
 ) {
-    suspend fun loginTopPage(authCookies: List<HttpCookie>) {
-        httpClient.setCookies(authCookies)
+    suspend fun loginTopPage(authSessionIdCookie: HttpCookie) {
+        httpClient.setCookie(authSessionIdCookie)
         val html = httpClient.send(TopPageRequest())
         if (!parseTopPage(html)) {
             throw TitechKyomuLoginError()

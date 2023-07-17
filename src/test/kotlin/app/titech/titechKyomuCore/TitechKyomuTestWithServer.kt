@@ -13,11 +13,9 @@ class TitechKyomuOnProductionTest {
         val titechkyomu = TitechKyomu()
         runBlocking {
             titechkyomu.loginTopPage(
-                listOf(
-                    HttpCookie(
-                        "AUTH_SESSION_ID",
-                        "value"
-                    )
+                HttpCookie(
+                    "AUTH_SESSION_ID",
+                    "value"
                 )
             )
         }
@@ -30,11 +28,9 @@ class TitechKyomuOnProductionTest {
         val titechkyomu = TitechKyomu()
         runBlocking {
             titechkyomu.loginTopPage(
-                listOf(
-                    HttpCookie(
-                        "AUTH_SESSION_ID",
-                        "value"
-                    )
+                HttpCookie(
+                    "AUTH_SESSION_ID",
+                    "value"
                 )
             )
             val courses = titechkyomu.fetchKyomuCourseData()

@@ -77,8 +77,8 @@ class HTTPClientImpl: HTTPClient {
         sb.toString()
     }
 
-    override fun setCookies(cookies: List<HttpCookie>) {
-        this.cookies = cookies.toMutableSet()
+    override fun setCookie(cookie: HttpCookie) {
+        this.cookies = mutableSetOf(cookie)
     }
 
     private fun generateUrlConnection(
