@@ -33,6 +33,8 @@ class HTTPClientImpl: HTTPClient {
             setCookie
                 ?.flatMap {
                     HttpCookie.parse(it)
+                }?.filter {
+                    !it.hasExpired()
                 }?.forEach { cookie ->
                     // FIXME: n^2
                     if (cookie.domain == null) {
