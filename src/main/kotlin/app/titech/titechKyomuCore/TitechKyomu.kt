@@ -49,20 +49,13 @@ class TitechKyomu(
             val periodTd = tds[2]
             val periodContent = periodTd.html()
 
-            val periodRegexpResult = "([日月火水木金土]|Sun|Mon|Tue|Wed|Thu|Fri|Sat)(\\d)-(\\d)\\s?([^<]*)".toRegex().findAll(periodContent)
+            val periodRegexpResult = "([日月火水木金土]|Sun|Mon|Tue|Wed|Thu|Fri|Sat)(\\d)-(\\d)\\s?(?:\\(([^()（）]+(\\([^()（）]+\\)[^()（）]*)*)\\))?".toRegex().findAll(periodContent)
             val periods = periodRegexpResult.map {
-                var location = it.groupValues[4]
-                if (location.startsWith("(")) {
-                    location = location.drop(1)
-                }
-                if (location.endsWith(")")) {
-                    location = location.dropLast(1)
-                }
                 KyomuCoursePeriod(
                     parseDayOfWeek(it.groupValues[1]),
                     it.groupValues[2].toIntOrNull() ?: -1,
                     it.groupValues[3].toIntOrNull() ?: -1,
-                    location
+                    it.groupValues[4]
                 )
             }.toList()
 
