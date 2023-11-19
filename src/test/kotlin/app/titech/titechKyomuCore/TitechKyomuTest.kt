@@ -46,7 +46,7 @@ class TitechKyomuTest {
             KyomuCourse(
                 "分光学",
                 listOf(
-                    KyomuCoursePeriod(DayOfWeek.MONDAY, 1, 2, "S7-202(S777)"),
+                    KyomuCoursePeriod(DayOfWeek.MONDAY, 11, 12, "S7-202(S777)"),
                     KyomuCoursePeriod(DayOfWeek.THURSDAY, 1, 2, "S7-202(S777)")
                 ),
                 2022,
@@ -117,7 +117,7 @@ class TitechKyomuTest {
             KyomuCourse(
                 "Spectroscopy",
                 listOf(
-                    KyomuCoursePeriod(DayOfWeek.MONDAY, 1, 2, "S7-202(S777)"),
+                    KyomuCoursePeriod(DayOfWeek.MONDAY, 11, 12, "S7-202(S777)"),
                     KyomuCoursePeriod(DayOfWeek.THURSDAY, 1, 2, "S7-202(S777)")
                 ),
                 2022,
