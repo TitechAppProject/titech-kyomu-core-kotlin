@@ -71,6 +71,15 @@ class TitechKyomu(
             val isForm8Td = tds[12].html()
             val isForm8 = isForm8Td.contains("Form No.8") || isForm8Td.contains("様式第８号")
 
+            val teachers = tds[7]
+                ?.html()
+                ?.split("<br>")
+                ?.map { it
+                    .trim()
+                    .replace(" 他", "")
+                    .replace(" et al.", "")
+                } ?: listOf()
+
             KyomuCourse(
                 name,
                 periods,
@@ -78,6 +87,7 @@ class TitechKyomu(
                 quarters,
                 code,
                 ocwId,
+                teachers,
                 isForm8
             )
         }
