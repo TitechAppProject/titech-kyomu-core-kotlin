@@ -37,7 +37,7 @@ class TitechKyomu(
             ?.html() ?: ""
         val year = "^(\\d+)".toRegex().find(title)?.value?.toIntOrNull() ?: 0
 
-        return doc.select("#ctl00_ContentPlaceHolder1_CheckResult1_grid tr:not(:first-of-type)").mapNotNull { row ->
+        return doc.select("#ctl00_ContentPlaceHolder1_CheckResult1_grid tr:not(:first-of-type):not(.timetableFukyoka)").mapNotNull { row ->
             val tds = row.select("td")
 
             val name = tds[6].select(".showAtPrintDiv").firstOrNull()?.html() ?: ""
@@ -49,7 +49,7 @@ class TitechKyomu(
             val periodTd = tds[2]
             val periodContent = periodTd.html()
 
-            val periodRegexpResult = "([日月火水木金土]|Sun|Mon|Tue|Wed|Thu|Fri|Sat)(\\d+)-(\\d+)\\s?(?:\\(([^()（）]+(\\([^()（）]+\\)[^()（）]*)*)\\))?".toRegex().findAll(periodContent)
+            val periodRegexpResult = "([日月火水木金土]|Sun|Mon|Tue|Wed|Thu|Fri|Sat)(\\d+)-(\\d+)\\s?(?:\\(([^()]+(?:\\([^)]+\\))?)\\))?".toRegex().findAll(periodContent)
             val periods = periodRegexpResult.map {
                 KyomuCoursePeriod(
                     parseDayOfWeek(it.groupValues[1]),
