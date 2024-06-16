@@ -7,5 +7,6 @@ data class KyomuCourse(
     val quarters: List<Int>,
     val code: String,
     val ocwId: String,
+    val teachers: List<String>,
     val isForm8: Boolean
 )

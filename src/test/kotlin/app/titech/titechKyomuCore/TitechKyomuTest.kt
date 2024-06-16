@@ -53,6 +53,7 @@ class TitechKyomuTest {
                 quarters = listOf(1),
                 code = "MAT.C302",
                 ocwId = "202202171",
+                teachers = listOf("矢野 哲司", "北沢 信章"),
                 isForm8 = false
             ),
             resultJa[0]
@@ -71,6 +72,7 @@ class TitechKyomuTest {
                 quarters = listOf(1),
                 code = "MAT.C350",
                 ocwId = "202202185",
+                teachers = listOf("松下 伸広", "山口 晃"),
                 isForm8 = false
             ),
             resultJa[1]
@@ -87,6 +89,7 @@ class TitechKyomuTest {
                 quarters = listOf(1),
                 code = "MAT.C301",
                 ocwId = "202202170",
+                teachers = listOf("鶴見 敬章", "保科 拓也"),
                 isForm8 = false
             ),
             resultJa[2]
@@ -102,6 +105,7 @@ class TitechKyomuTest {
                 quarters = listOf(2),
                 code = "MCS.T213",
                 ocwId = "202202382",
+                teachers = listOf("森 立平"),
                 isForm8 = false
             ),
             resultJa[5]
@@ -118,6 +122,7 @@ class TitechKyomuTest {
                 quarters = listOf(4),
                 code = "MCS.T419",
                 ocwId = "202217437",
+                teachers = listOf("中野 張", "三好 直人"),
                 isForm8 = true
             ),
             resultJa[6]
@@ -134,6 +139,7 @@ class TitechKyomuTest {
                 quarters = listOf(4),
                 code = "CSC.T375",
                 ocwId = "202202449",
+                teachers = listOf("小野 峻佑", "田村 康将"),
                 isForm8 = false
             ),
             resultJa[7]
@@ -159,9 +165,27 @@ class TitechKyomuTest {
                 quarters = listOf(1),
                 code = "MAT.C302",
                 ocwId = "202202171",
+                teachers = listOf("Yano Tetsuji", "Kitazawa Nobuaki"),
                 isForm8 = false
             ),
             resultEn[0]
+        )
+
+        assertEquals(
+            KyomuCourse(
+                name = "Ceramics Laboratory I",
+                periods = listOf(
+                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 5, end = 8, location = "S7-204, 207, 209"),
+                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 5, end = 8, location = "S7-204, 207, 209")
+                ),
+                year = 2022,
+                quarters = listOf(1),
+                code = "MAT.C350",
+                ocwId = "202202185",
+                teachers = listOf("Matsushita Nobuhiro", "Yamaguchi Akira"),
+                isForm8 = false
+            ),
+            resultEn[1]
         )
 
         assertFalse(resultEn.any { it.name == "Solid State Physics (Lattice)" })
@@ -175,6 +199,7 @@ class TitechKyomuTest {
                 quarters = listOf(2),
                 code = "MCS.T213",
                 ocwId = "202202382",
+                teachers = listOf("Mori Ryuhei"),
                 isForm8 = false
             ),
             resultEn[5]
@@ -191,6 +216,7 @@ class TitechKyomuTest {
                 quarters = listOf(4),
                 code = "MCS.T419",
                 ocwId = "202217437",
+                teachers = listOf("Nakano Yumiharu", "Miyoshi Naoto"),
                 isForm8 = true
             ),
             resultEn[6]
@@ -207,6 +233,7 @@ class TitechKyomuTest {
                 quarters = listOf(4),
                 code = "CSC.T375",
                 ocwId = "202202449",
+                teachers = listOf("Ono Shunsuke", "Tamura Yasumasa"),
                 isForm8 = false
             ),
             resultEn[7]
