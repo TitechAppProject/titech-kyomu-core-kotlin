@@ -239,4 +239,30 @@ class TitechKyomuTest {
             resultEn[7]
         )
     }
+
+    @Test
+    fun testParseReportCheckPageJaISCT() {
+        val titechKyomu = TitechKyomu()
+
+        val htmlJa =
+            TitechKyomuTest::class.java.getResource("/html/ReportCheckResultJapaneseISCT.html")!!
+                .readText()
+
+        val resultJa = titechKyomu.parseReportCheckPage(htmlJa)
+        assertTrue(resultJa.any { it.year == 2024 })
+    }
+
+
+    @Test
+    fun testParseReportCheckPageEnISCT() {
+        val titechKyomu = TitechKyomu()
+
+        val htmlEn =
+            TitechKyomuTest::class.java.getResource("/html/ReportCheckResultEnglishISCT.html")!!
+                .readText()
+
+        val resultEn = titechKyomu.parseReportCheckPage(htmlEn)
+        assertTrue(resultEn.any { it.year == 2024 })
+    }
+
 }
