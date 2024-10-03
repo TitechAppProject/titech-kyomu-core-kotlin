@@ -32,7 +32,7 @@ class TitechKyomu(
 
     internal fun parseReportCheckPage(html: String): List<KyomuCourse> {
         val doc = Jsoup.parse(html)
-        val title = doc.select("#ctl00_ContentPlaceHolder1_CheckResult1_ctl08_ctl13_lblTerm")
+        val title = doc.select("#ctl00_ContentPlaceHolder1_CheckResult1_ctl08_ctl00_lblTerm, #ctl00_ContentPlaceHolder1_CheckResult1_ctl08_ctl13_lblTerm")
             .first()
             ?.html() ?: ""
         val year = "^(\\d+)".toRegex().find(title)?.value?.toIntOrNull() ?: 0
