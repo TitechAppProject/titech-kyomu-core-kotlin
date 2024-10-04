@@ -44,105 +44,52 @@ class TitechKyomuTest {
 
         assertEquals(
             KyomuCourse(
-                name = "分光学",
+                name = "世界を知る：南・東南アジア",
                 periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 11, end = 12, location = "S7-202(S000)"),
-                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 1, end = 2, location = "S7-202")
+                    KyomuCoursePeriod(day = DayOfWeek.WEDNESDAY, start = 3, end = 4, location = "")
                 ),
-                year = 2022,
-                quarters = listOf(1),
-                code = "MAT.C302",
-                ocwId = "202202171",
-                teachers = listOf("矢野 哲司", "北沢 信章"),
+                year = 2024,
+                quarters = listOf(3),
+                code = "LAH.A505",
+                ocwId = "202403782",
+                teachers = listOf("※田中 李歩"),
                 isForm8 = false
             ),
             resultJa[0]
         )
 
-        assertFalse(resultJa.any { it.name == "固体物理学(格子系)" })
-
         assertEquals(
             KyomuCourse(
-                name = "セラミックス実験第一",
+                name = "半導体物性特論（材料）",
                 periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.TUESDAY, start = 3, end = 4, location = "情報工学系計算機室， GSIC情報棟 3階307号室"),
-                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 3, end = 4, location = "情報工学系計算機室， GSIC情報棟 3階308号室")
+                    KyomuCoursePeriod(day = DayOfWeek.TUESDAY, start = 1, end = 2, location = "J2-303(J234)"),
+                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 1, end = 2, location = "J2-303(J234)")
                 ),
-                year = 2022,
-                quarters = listOf(1),
-                code = "MAT.C350",
-                ocwId = "202202185",
-                teachers = listOf("松下 伸広", "山口 晃"),
-                isForm8 = false
+                year = 2024,
+                quarters = listOf(3),
+                code = "ESI.J442.L (MAT.C404)",
+                ocwId = "202402959",
+                teachers = listOf("真島 豊, 平松 秀典"),
+                isForm8 = true // Check Form8
             ),
             resultJa[1]
         )
 
-        assertEquals(
-            KyomuCourse(
-                name = "結晶化学（C）",
-                periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 7, end = 10, location = "西2号館教養科目物理学実験室（Introductory Physics Laboratory）"),
-                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 5, end = 6, location = "S7-202")
-                ),
-                year = 2022,
-                quarters = listOf(1),
-                code = "MAT.C301",
-                ocwId = "202202170",
-                teachers = listOf("鶴見 敬章", "保科 拓也"),
-                isForm8 = false
-            ),
-            resultJa[2]
-        )
-
-        assertFalse(resultJa.any { it.name == "半導体物性" })
+        // 特許の科目をNGに
+        assertFalse(resultJa.any { it.name == "知的情報資源の活用と特許" })
 
         assertEquals(
             KyomuCourse(
-                name = "アルゴリズムとデータ構造",
+                name = "エネルギーイノベーション協創プロジェクト",
                 periods = emptyList(),
-                year = 2022,
-                quarters = listOf(2),
-                code = "MCS.T213",
-                ocwId = "202202382",
-                teachers = listOf("森 立平"),
+                year = 2024,
+                quarters = listOf(3, 4),
+                code = "ESI.B502",
+                ocwId = "202404150",
+                teachers = listOf("コース主任, 渡部 卓雄, 難波江 裕太"),
                 isForm8 = false
             ),
             resultJa[5]
-        )
-
-        assertEquals(
-            KyomuCourse(
-                name = "確率微分方程式",
-                periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.TUESDAY, start = 3, end = 4, location = "W931"),
-                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 3, end = 4, location = "W931")
-                ),
-                year = 2022,
-                quarters = listOf(4),
-                code = "MCS.T419",
-                ocwId = "202217437",
-                teachers = listOf("中野 張", "三好 直人"),
-                isForm8 = true
-            ),
-            resultJa[6]
-        )
-
-        assertEquals(
-            KyomuCourse(
-                name = "システム構築演習",
-                periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.TUESDAY, start = 3, end = 4, location = "情報工学系計算機室"),
-                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 3, end = 4, location = "情報工学系計算機室")
-                ),
-                year = 2022,
-                quarters = listOf(4),
-                code = "CSC.T375",
-                ocwId = "202202449",
-                teachers = listOf("小野 峻佑", "田村 康将"),
-                isForm8 = false
-            ),
-            resultJa[7]
         )
     }
 
@@ -156,16 +103,15 @@ class TitechKyomuTest {
 
         assertEquals(
             KyomuCourse(
-                name = "Spectroscopy",
+                name = "Area Studies: South and Southeast Asia",
                 periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 11, end = 12, location = "S7-202(S000)"),
-                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 1, end = 2, location = "S7-202")
+                    KyomuCoursePeriod(day = DayOfWeek.WEDNESDAY, start = 3, end = 4, location = "")
                 ),
-                year = 2022,
-                quarters = listOf(1),
-                code = "MAT.C302",
-                ocwId = "202202171",
-                teachers = listOf("Yano Tetsuji", "Kitazawa Nobuaki"),
+                year = 2024,
+                quarters = listOf(3),
+                code = "LAH.A505",
+                ocwId = "202403782",
+                teachers = listOf("※Tanaka Riho"),
                 isForm8 = false
             ),
             resultEn[0]
@@ -173,96 +119,36 @@ class TitechKyomuTest {
 
         assertEquals(
             KyomuCourse(
-                name = "Ceramics Laboratory I",
+                name = "Physics and Chemistry of Semiconductors",
                 periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 5, end = 8, location = "S7-204, 207, 209"),
-                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 5, end = 8, location = "S7-204, 207, 209")
+                    KyomuCoursePeriod(day = DayOfWeek.TUESDAY, start = 1, end = 2, location = "J2-303(J234)"),
+                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 1, end = 2, location = "J2-303(J234)")
                 ),
-                year = 2022,
-                quarters = listOf(1),
-                code = "MAT.C350",
-                ocwId = "202202185",
-                teachers = listOf("Matsushita Nobuhiro", "Yamaguchi Akira"),
-                isForm8 = false
+                year = 2024,
+                quarters = listOf(3),
+                code = "ESI.J442.L (MAT.C404)",
+                ocwId = "202402959",
+                teachers = listOf("Majima Yutaka, Hiramatsu Hidenori"),
+                isForm8 = true // Check Form8
             ),
             resultEn[1]
         )
 
-        assertFalse(resultEn.any { it.name == "Solid State Physics (Lattice)" })
-        assertFalse(resultEn.any { it.name == "Semiconductor Physics" })
+        // 特許の科目をNGに
+        assertFalse(resultEn.any { it.name == "Utilization of Intelligent Information Resources and Patents" })
 
         assertEquals(
             KyomuCourse(
-                name = "Introduction to Algorithms and Data Structures",
+                name = "Energy innovation co-creative project",
                 periods = emptyList(),
-                year = 2022,
-                quarters = listOf(2),
-                code = "MCS.T213",
-                ocwId = "202202382",
-                teachers = listOf("Mori Ryuhei"),
+                year = 2024,
+                quarters = listOf(3, 4),
+                code = "ESI.B502",
+                ocwId = "202404150",
+                teachers = listOf("Head, Watanabe Takuo, Nabae Yuta"),
                 isForm8 = false
             ),
             resultEn[5]
         )
-
-        assertEquals(
-            KyomuCourse(
-                name = "Stochastic differential equations",
-                periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.TUESDAY, start = 3, end = 4, location = "W931"),
-                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 3, end = 4, location = "W931")
-                ),
-                year = 2022,
-                quarters = listOf(4),
-                code = "MCS.T419",
-                ocwId = "202217437",
-                teachers = listOf("Nakano Yumiharu", "Miyoshi Naoto"),
-                isForm8 = true
-            ),
-            resultEn[6]
-        )
-
-        assertEquals(
-            KyomuCourse(
-                name = "Workshop on System Implementation",
-                periods = listOf(
-                    KyomuCoursePeriod(day = DayOfWeek.TUESDAY, start = 3, end = 4, location = "情報工学系計算機室"),
-                    KyomuCoursePeriod(day = DayOfWeek.FRIDAY, start = 3, end = 4, location = "情報工学系計算機室")
-                ),
-                year = 2022,
-                quarters = listOf(4),
-                code = "CSC.T375",
-                ocwId = "202202449",
-                teachers = listOf("Ono Shunsuke", "Tamura Yasumasa"),
-                isForm8 = false
-            ),
-            resultEn[7]
-        )
     }
-
-    @Test
-    fun testParseReportCheckPageJaISCT() {
-        val titechKyomu = TitechKyomu()
-
-        val htmlJa =
-            TitechKyomuTest::class.java.getResource("/html/ReportCheckResultJapaneseISCT.html")!!
-                .readText()
-
-        val resultJa = titechKyomu.parseReportCheckPage(htmlJa)
-        assertTrue(resultJa.any { it.year == 2024 })
-    }
-
-
-    @Test
-    fun testParseReportCheckPageEnISCT() {
-        val titechKyomu = TitechKyomu()
-
-        val htmlEn =
-            TitechKyomuTest::class.java.getResource("/html/ReportCheckResultEnglishISCT.html")!!
-                .readText()
-
-        val resultEn = titechKyomu.parseReportCheckPage(htmlEn)
-        assertTrue(resultEn.any { it.year == 2024 })
-    }
-
 }
