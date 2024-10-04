@@ -32,9 +32,7 @@ class TitechKyomu(
 
     internal fun parseReportCheckPage(html: String): List<KyomuCourse> {
         val doc = Jsoup.parse(html)
-        // ...ctl00_lblTerm が2024/10時点、...ctl13_lblTerm が2024/9の東工大時代のCSSのIDです。今後も変更される可能性があります。
-        // #ctl00_ContentPlaceHolder1_ctl00_lblTerm は履修登録状況が一時保存のときのIDです。 今後も変更される可能性があります。
-        val title = doc.select("#ctl00_ContentPlaceHolder1_CheckResult1_ctl08_ctl00_lblTerm, #ctl00_ContentPlaceHolder1_CheckResult1_ctl08_ctl13_lblTerm, #ctl00_ContentPlaceHolder1_ctl00_lblTerm")
+        val title = doc.select("[id$='_lblTerm']") // 科学大変更前後・一時保存の全ケースに対応
             .first()
             ?.html() ?: ""
         val year = "^(\\d+)".toRegex().find(title)?.value?.toIntOrNull() ?: 0
