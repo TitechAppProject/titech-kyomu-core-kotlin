@@ -151,4 +151,118 @@ class TitechKyomuTest {
             resultEn[5]
         )
     }
+
+    @Test
+    fun testParseTemporaryReportCheckPageJa() {
+        val titechKyomu = TitechKyomu()
+
+        val htmlJa = TitechKyomuTest::class.java.getResource("/html/ReportCheckResultTemporarySaveJapanese.html")!!.readText()
+
+        val resultJa = titechKyomu.parseReportCheckPage(htmlJa)
+
+        assertEquals(
+            KyomuCourse(
+                name = "学士特定課題研究（情報通信系）",
+                periods = emptyList(),
+                year = 2024,
+                quarters = listOf(3, 4),
+                code = "ICT.Z389-02",
+                ocwId = "202411248",
+                teachers = listOf("各 教員"),
+                isForm8 = false
+            ),
+            resultJa[0]
+        )
+
+        assertEquals(
+            KyomuCourse(
+                name = "情報通信工学統合論発展",
+                periods = listOf(
+                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 1, end = 2, location = "M-123(H111)"),
+                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 1, end = 2, location = "M-123(H111)")
+                ),
+                year = 2024,
+                quarters = listOf(3),
+                code = "ICT.A436",
+                ocwId = "202436674",
+                teachers = listOf("松本 隆太郎, 山田 功, 宮田 純子"),
+                isForm8 = false
+            ),
+            resultJa[1]
+        )
+
+        assertEquals(
+            KyomuCourse(
+                name = "人間情報システム概論II",
+                periods = listOf(
+                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 1, end = 2, location = "G3-202(G311)"),
+                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 1, end = 2, location = "G3-202(G311)"),
+                    ),
+                year = 2024,
+                quarters = listOf(4),
+                code = "ICT.A418",
+                ocwId = "202404681",
+                teachers = listOf("永井 岳大, 山口 雅浩, 奥村 学"),
+                isForm8 = false
+            ),
+            resultJa[2]
+        )
+    }
+
+    @Test
+    fun testParseTemporaryReportCheckPageEn() {
+        val titechKyomu = TitechKyomu()
+
+        val htmlEn = TitechKyomuTest::class.java.getResource("/html/ReportCheckResultTemporarySaveEnglish.html")!!.readText()
+
+        val resultEn = titechKyomu.parseReportCheckPage(htmlEn)
+
+        assertEquals(
+            KyomuCourse(
+                name = "Independent research project(ICT)",
+                periods = emptyList(),
+                year = 2024,
+                quarters = listOf(3, 4),
+                code = "ICT.Z389-02",
+                ocwId = "202411248",
+                teachers = listOf("Teaching Staffs"),
+                isForm8 = false
+            ),
+            resultEn[0]
+        )
+
+        assertEquals(
+            KyomuCourse(
+                name = "Communications and Computer Engineering - Advanced Concepts",
+                periods = listOf(
+                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 1, end = 2, location = "M-123(H111)"),
+                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 1, end = 2, location = "M-123(H111)")
+                ),
+                year = 2024,
+                quarters = listOf(3),
+                code = "ICT.A436",
+                ocwId = "202436674",
+                teachers = listOf("Matsumoto Ryutaroh, Yamada Isao, Miyata Sumiko"),
+                isForm8 = false
+            ),
+            resultEn[1]
+        )
+
+        assertEquals(
+            KyomuCourse(
+                name = "Human-Centric Information Systems II",
+                periods = listOf(
+                    KyomuCoursePeriod(day = DayOfWeek.MONDAY, start = 1, end = 2, location = "G3-202(G311)"),
+                    KyomuCoursePeriod(day = DayOfWeek.THURSDAY, start = 1, end = 2, location = "G3-202(G311)"),
+                ),
+                year = 2024,
+                quarters = listOf(4),
+                code = "ICT.A418",
+                ocwId = "202404681",
+                teachers = listOf("Nagai Takehiro, Yamaguchi Masahiro, Okumura Manabu"),
+                isForm8 = false
+            ),
+            resultEn[2]
+        )
+    }
 }
