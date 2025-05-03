@@ -40,12 +40,13 @@ class TitechKyomu(
         return doc.select("#ctl00_ContentPlaceHolder1_CheckResult1_grid tr:not(:first-of-type):not(.timetableFukyoka)").mapNotNull { row ->
             val tds = row.select("td")
 
-            val name = tds[6].select(".showAtPrintDiv").firstOrNull()?.html() ?: ""
-            val resultContent = tds[9].html()
-            if (!resultContent.contains("OK") && !resultContent.contains("○")) {
+            if (tds.size != 13) {
                 return@mapNotNull null
             }
 
+            val isValid = tds[10].html().contains("OK")
+
+            val name = tds[5].select(".showAtPrintDiv").firstOrNull()?.html() ?: ""
             val periodTd = tds[2]
             val periodContent = periodTd.html()
 
@@ -59,26 +60,26 @@ class TitechKyomu(
                 )
             }.toList()
 
-            val quarters = parseQuarters(tds[1].html())
-            val code = tds[5].html()
-            val ocwId = tds[6].select("a")
+            val quarters = parseQuarters(tds[1].text())
+            val code = tds[4].html()
+            val ocwId = tds[5].select("a")
                 .firstOrNull()
                 ?.attr("href")
                 ?.run {
-                    "JWC=([0-9]+)".toRegex().find(this)?.groupValues?.get(1)
+                    "jwc=([0-9]+)".toRegex().find(this)?.groupValues?.get(1)
                 } ?: ""
 
             val isForm8Td = tds[12].html()
             val isForm8 = isForm8Td.contains("Form No.8") || isForm8Td.contains("様式第８号")
 
-            val teachers = tds[7]
-                ?.html()
-                ?.split("<br>")
-                ?.map { it
+            val teachers = tds[8]
+                .html()
+                .split("<br>")
+                .map { it
                     .trim()
                     .replace(" 他", "")
                     .replace(" et al.", "")
-                } ?: listOf()
+                }
 
             KyomuCourse(
                 name,
@@ -88,6 +89,7 @@ class TitechKyomu(
                 code,
                 ocwId,
                 teachers,
+                isValid,
                 isForm8
             )
         }
@@ -97,6 +99,7 @@ class TitechKyomu(
         val str = html
             .replace("Q", "")
             .replace("[～〜~]".toRegex(), "-")
+            .replace(" ", "")
 
         return if (str.contains("-")) {
             val res = str.split("-").mapNotNull { it.toIntOrNull() }
