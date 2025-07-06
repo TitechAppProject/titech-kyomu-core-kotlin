@@ -44,7 +44,7 @@ class TitechKyomu(
                 return@mapNotNull null
             }
 
-            val isValid = tds[10].html().contains("OK")
+            val isValid = tds[9].html().contains("OK") || tds[9].html().contains("○")
 
             val name = tds[5].select(".showAtPrintDiv").firstOrNull()?.html() ?: ""
             val periodTd = tds[2]
