@@ -54,12 +54,10 @@ publishing {
     }
     repositories {
         maven {
-            name = "MavenCentral"
-            val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            val snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
+            name = "ossrh-staging-api"
+            url = uri("https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/")
             val ossrhUsername: String by project
             val ossrhPassword: String by project
-            url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
             credentials {
                 username = ossrhUsername
                 password = ossrhPassword
@@ -74,6 +72,12 @@ java {
 }
 
 signing {
+    val signingKey: String by project
+    val signingPassword: String by project
+    useInMemoryPgpKeys(
+        signingKey,
+        signingPassword
+    )
     sign(publishing.publications["maven"])
 }
 
