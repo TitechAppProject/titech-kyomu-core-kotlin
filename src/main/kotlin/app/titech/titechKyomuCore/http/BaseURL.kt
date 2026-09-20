@@ -6,8 +6,8 @@ class BaseURL {
         var origin = "https://kyomu0.gakumu.titech.ac.jp"
 
         fun changeToMock() {
-            host = "titech-kyomu-mock.s3.ap-northeast-1.amazonaws.com"
-            origin = "https://titech-kyomu-mock.s3.ap-northeast-1.amazonaws.com"
+            host = "kyomu-mock.isct.app"
+            origin = "https://kyomu-mock.isct.app"
         }
     }
 }
